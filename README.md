@@ -6,9 +6,13 @@ Chases_Favorite_Parent is a self-hosted Python Flask app that searches a directo
 
 ![example.png from the repo](example.png)
 
+---
+
 # How to use
 
 Stay tuned
+
+---
 
 # Todo
 
