@@ -12,20 +12,34 @@ The random component is intentional so that the app remains relatively innocent/
 
 # How to use
 
-## Mount the image folder
+## Prepare Your Images
 
-'/static/images/' is the directory for the photos
+Have a directory (and know it's directory path) with your images handy.
 
+For this example, I am using 'C:\Users\cwest\OneDrive\Desktop\images'.
 
+Replace 'C:\Users\cwest\OneDrive\Desktop\images' with your directory path 
 
-# What if I want to modify the HTML for 'my-favorite-sibling' or 'my-favorite-child'?
+## Run the container
+
+Download the container image:
+
+'docker pull ghcr.io/goingoffroading/chases_favorite_parent:latest'
+
+Run the container: 
+
+'docker run  --volume=C:\Users\cwest\OneDrive\Desktop\images:/app/static/images -p 5000:5000 -d ghcr.io/goingoffroading/chases_favorite_parent:latest'
+
+# What if I want to modify the HTML for 'my-favorite-sibling' or 'my-favorite-child' or 'my_favoite_cat'?
 
 That makes us bothers.
 
-- Clone the repo
-- Modify lines 6 and 18 in the '/templates/index.html' to reflect the desired messaging.
-- Build the container image (i.e. 'docker build -t favorite -f dockerfile .' or etc)
-- Deploy the image you crazy animal
+- When you run the container, change these environmental variables as needed:
+
+| Variable | Type | Default | Notes |
+|-----------------|-----------------|-----------------|-----------------|
+| APP_TITLE   | String    | 'My Favorite Parent'    | This is what will appear in the browser tab label    |
+| APP_HEADING    | String    | 'My Favorite Parent Is:'    | This is what will appear above the image rendered on the page    |
 
 
 ---
@@ -34,6 +48,6 @@ That makes us bothers.
 
 - [x] Automate building the container image to GitHub
 - [ ] Add more CSS to make the display pretty
-- [ ] Add deployment instructions
+- [x] Add deployment instructions
 - [ ] Add a Kubernetes/DockerCompose deployment example
 
