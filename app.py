@@ -7,6 +7,10 @@ app = Flask(__name__)
 # Set the directory where the images are stored
 IMAGE_DIR = os.path.join('static', 'images')
 
+# Get the title and heading from environment variables with default values
+APP_TITLE = os.getenv('APP_TITLE', 'My Favorite Parent')
+APP_HEADING = os.getenv('APP_HEADING', 'My Favorite Parent Is:')
+
 @app.route('/')
 def index():
     # List all files in the image directory
@@ -17,7 +21,7 @@ def index():
     # Pick a random image
     random_image = random.choice(images)
     
-    return render_template('index.html', image=random_image)
+    return render_template('index.html', image=random_image, title=APP_TITLE, heading=APP_HEADING)
 
 @app.route('/images/<filename>')
 def image(filename):
