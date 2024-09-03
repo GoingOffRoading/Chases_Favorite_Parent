@@ -12,8 +12,8 @@ Stay tuned
 
 # Todo
 
-[ ] - Automate building the container image to GitHub
-[ ] - Add more CSS to make the display pretty
-[ ] - Add deployment instructions
-[ ] - Add a Kubernetes/DockerCompose deployment example
+- [ ] Automate building the container image to GitHub
+- [ ] Add more CSS to make the display pretty
+- [ ] Add deployment instructions
+- [ ] Add a Kubernetes/DockerCompose deployment example
 
