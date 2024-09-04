@@ -16,19 +16,23 @@ The random component is intentional so that the app remains relatively innocent/
 
 Have a directory (and know it's directory path) with your images handy.
 
-For this example, I am using 'C:\Users\cwest\OneDrive\Desktop\images'.
+For this example, I am using `C:\Users\cwest\OneDrive\Desktop\images`.
 
-Replace 'C:\Users\cwest\OneDrive\Desktop\images' with your directory path 
+Replace `C:\Users\GoingOffRoading\images` with your directory path 
 
 ## Run the container
 
 Download the container image:
 
-'docker pull ghcr.io/goingoffroading/chases_favorite_parent:latest'
+`docker pull ghcr.io/goingoffroading/chases_favorite_parent:latest`
 
 Run the container: 
 
-'docker run  --volume=C:\Users\cwest\OneDrive\Desktop\images:/app/static/images -p 5000:5000 -d ghcr.io/goingoffroading/chases_favorite_parent:latest'
+`docker run  --volume=C:\Users\cwest\OneDrive\Desktop\images:/app/static/images -p 5000:5000 -d ghcr.io/goingoffroading/chases_favorite_parent:latest`
+
+## How about Kubernetes?
+
+See the attached `kubernetes_deployment_example.yml` for 
 
 # What if I want to modify the HTML for 'my-favorite-sibling' or 'my-favorite-child' or 'my_favoite_cat'?
 
@@ -40,14 +44,3 @@ That makes us bothers.
 |-----------------|-----------------|-----------------|-----------------|
 | APP_TITLE   | String    | 'My Favorite Parent'    | This is what will appear in the browser tab label    |
 | APP_HEADING    | String    | 'My Favorite Parent Is:'    | This is what will appear above the image rendered on the page    |
-
-
----
-
-# Todo
-
-- [x] Automate building the container image to GitHub
-- [ ] Add more CSS to make the display pretty
-- [x] Add deployment instructions
-- [ ] Add a Kubernetes/DockerCompose deployment example
-

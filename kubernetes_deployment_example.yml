@@ -1,0 +1,84 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: favoriteparent
+  labels:
+    app: favoriteparent
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: favoriteparent
+  template:
+    metadata:
+      labels:
+        app: favoriteparent
+    spec:
+      containers:
+        - name: favoriteparent
+          image: ghcr.io/goingoffroading/chases_favorite_parent:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+          volumeMounts:
+            - name: nfs-favoriteparent
+              mountPath: "/app/static/images"
+      volumes:
+        - name: nfs-favoriteparent
+          nfs:
+            server: 192.168.1.100
+            path: "/mnt/CFP"
+            readOnly: true
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: favoriteparent
+spec:
+  selector:
+    app: favoriteparent
+  ports:
+    - name: favoriteparent
+      port: 5000
+  type: NodePort
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: favoriteparent-https
+  namespace: default
+spec:
+  entryPoints:
+    - https
+  routes:
+    - match: Host(`favoriteparentoriteparent.com`)
+      kind: Rule
+      services:
+        - name: favoriteparent
+          port: 5000
+  tls:
+    certResolver: le
+    #options: {}
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: favoriteparent-http
+  namespace: default
+spec:
+  entryPoints:
+    - http
+  routes:
+    - match: Host(`favoriteparentoriteparent.com`)
+      kind: Rule
+      services:
+        - name: favoriteparent
+          port: 5000
+      middlewares:
+        - name: redirect
