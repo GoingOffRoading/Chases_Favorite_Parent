@@ -34,13 +34,19 @@ Run the container:
 
 ## How about Kubernetes?
 
-See the attached `kubernetes_deployment_example.yml` for 
+See the attached `kubernetes_deployment_example.yml` 
+
+Note:
+
+- This container is using Traefik as a reverse proxy and is leveraging LetsEncrypt for it's certificate.  More info on how to this up is [in the Traefik development docs](https://doc.traefik.io/traefik/user-guides/crd-acme/)
+- I'm not using a PV/PVC and instead just using an NFS mount... Because I am lazy
+- NodeSelector is not present on the config, but will need to be there if you use localhost for image hosting
 
 # What if I want to modify the HTML for 'my-favorite-sibling' or 'my-favorite-child' or 'my_favoite_cat'?
 
 That makes us bothers.
 
-- When you run the container, change these environmental variables as needed:
+When you run the container, change these environmental variables as needed:
 
 | Variable | Type | Default | Notes |
 |-----------------|-----------------|-----------------|-----------------|
