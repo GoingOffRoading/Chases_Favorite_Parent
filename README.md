@@ -20,6 +20,8 @@ For this example, I am using `C:\Users\cwest\OneDrive\Desktop\images`.
 
 Replace `C:\Users\GoingOffRoading\images` with your directory path 
 
+If you don't mount a folder for images, there's a couple default images that will show to proof of concept the container.
+
 ## Run the container
 
 Download the container image:

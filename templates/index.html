@@ -12,10 +12,22 @@
             width: auto; /* Maintain the aspect ratio */
             height: auto; /* Maintain the aspect ratio */
         }
+
+        /* Flexbox container for centering the content */
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Full viewport height */
+            text-align: center; /* Center text horizontally */
+        }
     </style>
 </head>
 <body>
-    <h1>{{ heading }}</h1>
-    <img src="{{ url_for('image', filename=image) }}" alt="Random Image">
+    <div class="center-content">
+        <h1>{{ heading }}</h1>
+        <img src="{{ url_for('image', filename=image) }}" alt="Random Image">
+    </div>
 </body>
 </html>
